@@ -1,0 +1,108 @@
+html,body{
+    height:100%;
+    margin:0;
+    font-size: 16px;
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    line-height:1.8em;
+    color: #666;
+}
+
+.pimg1{
+    background-image:url('images/image1.jpg');
+    min-height:100%;/*The Big Image*/
+}
+
+/*MY NOTES*/
+/*The background of an element is the total size of the element, including padding and border (but not the margin).*/
+
+.pimg2{
+    background-image:url('images/image2.jpg');
+    min-height:calc(800px/2);
+}
+
+.pimg3{
+    background-image:url('images/image3.jpg');
+    min-height:calc(800px/2);
+}
+
+/*MY NOTES*/
+
+/*
+You see the relation? In both cover and contain, aspect ratio is preserved. But the if - else conditions reverse in both the cases.
+
+This is what makes cover to cover full page, without any white portion visible. When aspect ratio of container is greater, scaling image so that its width becomes equal to container width. Now, height will be greater, as aspect ratio is smaller. Thus it covers the whole page without any white portion.
+
+Q. Can they be replaced by percentages?
+
+No, not simply by percentages. You'll need conditioning.
+
+Q. In which situations should I prefer one over the other?
+
+When you are creating a website, you wouldn't want any white portion in the fixed background. So use cover.
+
+contain on the other can be used when you are using a repeating background (e.g. when you have a pattern image with very high aspect ratio wrt veiwport/container you can use contain and set background-repeat to repeat-y). But a more appropriate use for contain would be for a fixed height/width element.
+*/
+
+
+.pimg1, .pimg2, .pimg3{
+    position:relative; /*The elements are relative to themselves in the normal document flow. In this case we are using the normal document flow and not leaving as static*/
+    opacity: 0.70;
+    background-position-x: center;
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+
+}
+
+/*fixed = parallex 
+scroll = normal*/
+
+.section{
+    text-align:center;
+    padding:50px 80px;
+}
+
+
+.section-light{
+    background-color: lightgrey;
+    color: #666;
+}
+
+.section-dark{
+    background-color: rgb(2, 2, 20);
+    color:white;
+
+}
+
+
+/*This is out of the document flow but positions itself to the closest explicitly decleared positioning context, which in this case is the .pimgs'*/
+.ptext{
+    position:absolute;
+    top: 50%;
+    width:100%;
+    text-align: center;
+    color: #000;
+    font-size:27px;
+    letter-spacing: 8px;
+    text-transform:uppercase;
+}
+
+.ptext .border{
+    background-color:#111;
+    color:white;
+    padding: 20px;
+}
+
+
+.ptext .border.trans{
+    background-color: transparent;
+}
+
+/*The Media Queries */
+@media(max-width:568px){
+    .pimg1, .pimg2, .pimg3{
+        background-attachment: scroll;
+    }
+}
