@@ -78,6 +78,8 @@ scroll = normal*/
 
 
 /*This is out of the document flow but positions itself to the closest explicitly decleared positioning context, which in this case is the .pimgs'*/
+
+
 .ptext{
     position:absolute;
     top: 50%;
